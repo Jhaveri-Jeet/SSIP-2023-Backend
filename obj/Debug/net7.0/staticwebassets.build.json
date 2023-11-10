@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "hp4ilhLA6n+whuBByXHlXdSqpBBQsYVyr+C2uB1co00=",
+  "Source": "CriminalDatabaseBackend",
+  "BasePath": "_content/CriminalDatabaseBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
