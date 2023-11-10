@@ -41,4 +41,4 @@ The Criminal Case Management System Backend is responsible for handling data ope
 
 ## API Documentation
 
-Detailed API documentation can be found [here](#) [Provide a link to your API documentation when available].
+Detailed API documentation can be found [here](#)
