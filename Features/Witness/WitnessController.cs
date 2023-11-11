@@ -22,7 +22,7 @@ namespace CriminalDatabaseBackend.Features.Witness
             var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == id);
             if (cases is null) return NotFound();
 
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\uploads", file.FileName);
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\WitnessImages", file.FileName);
             FileStream fileStream = System.IO.File.Create(filePath);
             await file.CopyToAsync(fileStream);
             fileStream.Close();
