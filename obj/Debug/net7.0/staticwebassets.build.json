@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "25nqmDArPqbCpVL8akfsJeYIF1UcuArk5HwWnZxQI84=",
+  "Hash": "3P320rj6B/XhXJV+MPplREG65ZOCiV2RHUEOEhM5XSc=",
   "Source": "CriminalDatabaseBackend",
   "BasePath": "_content/CriminalDatabaseBackend",
   "Mode": "Default",
@@ -15,5 +15,57 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\Acts.jsx",
+      "SourceId": "CriminalDatabaseBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\",
+      "BasePath": "_content/CriminalDatabaseBackend",
+      "RelativePath": "EvidenceImages/Acts.jsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\EvidenceImages\\Acts.jsx"
+    },
+    {
+      "Identity": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\CaseType.jsx",
+      "SourceId": "CriminalDatabaseBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\",
+      "BasePath": "_content/CriminalDatabaseBackend",
+      "RelativePath": "EvidenceImages/CaseType.jsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\EvidenceImages\\CaseType.jsx"
+    },
+    {
+      "Identity": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg",
+      "SourceId": "CriminalDatabaseBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\",
+      "BasePath": "_content/CriminalDatabaseBackend",
+      "RelativePath": "WitnessImages/WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\WitnessImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg"
+    }
+  ]
 }

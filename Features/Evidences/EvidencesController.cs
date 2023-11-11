@@ -27,10 +27,11 @@ namespace CriminalDatabaseBackend.Features.Evidences
             fileStream.Close();
 
             evidence.CaseId = id;
+            evidence.EvidenceImageName = file.FileName;
             await databaseContext.AddAsync(evidence);
             await databaseContext.SaveChangesAsync();
 
-            return Ok();
+            return Ok("Evidence Added !");
         }
 
         [HttpGet]

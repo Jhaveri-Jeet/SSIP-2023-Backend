@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\Acts.jsx",
+      "PackagePath": "staticwebassets\\EvidenceImages\\Acts.jsx"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\CaseType.jsx",
+      "PackagePath": "staticwebassets\\EvidenceImages\\CaseType.jsx"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.CriminalDatabaseBackend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.CriminalDatabaseBackend.props",
+      "PackagePath": "build\\CriminalDatabaseBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.CriminalDatabaseBackend.props",
+      "PackagePath": "buildMultiTargeting\\CriminalDatabaseBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.CriminalDatabaseBackend.props",
+      "PackagePath": "buildTransitive\\CriminalDatabaseBackend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -28,10 +28,11 @@ namespace CriminalDatabaseBackend.Features.Witness
             fileStream.Close();
 
             witness.CaseId = id;
+            witness.WitnessImage = file.FileName;
             await databaseContext.AddAsync(witness);
             await databaseContext.SaveChangesAsync();
 
-            return Ok();
+            return Ok("Witness Added !");
         }
 
         [HttpGet]
