@@ -41,6 +41,15 @@ namespace CriminalDatabaseBackend.Features.Evidences
             return Ok(evidence);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            var evidence = await databaseContext.Evidences.Include(evidence => evidence.Case).FirstOrDefaultAsync(e => e.Id == id);
+            if(evidence is null) return NotFound();
+
+            return Ok(evidence);
+        }
+
         [HttpGet("/EvidenceAccCase/{caseId}")]
         public async Task<IActionResult> GetByCase([FromRoute] int caseId)
         {
