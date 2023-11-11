@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "hp4ilhLA6n+whuBByXHlXdSqpBBQsYVyr+C2uB1co00=",
+  "Hash": "25nqmDArPqbCpVL8akfsJeYIF1UcuArk5HwWnZxQI84=",
   "Source": "CriminalDatabaseBackend",
   "BasePath": "_content/CriminalDatabaseBackend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "CriminalDatabaseBackend\\wwwroot",
+      "Source": "CriminalDatabaseBackend",
+      "ContentRoot": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\",
+      "BasePath": "_content/CriminalDatabaseBackend",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

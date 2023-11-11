@@ -17,25 +17,18 @@ namespace CriminalDatabaseBackend.Features.Witness
         }
 
         [HttpPost("{id}"), DisableRequestSizeLimit]
-        public async Task<IActionResult> AddWitness([FromRoute] int id, [FromForm] IFormFile file)
+        public async Task<IActionResult> AddWitness([FromRoute] int id, [FromForm] IFormFile file, [FromForm] Witness witness)
         {
             var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == id);
             if (cases is null) return NotFound();
 
-            string uploadDir = "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\Shared\\Images\\";
-            string filePath = Path.Combine(uploadDir, file.FileName);
-            var imageName = DateTime.Now.Ticks.ToString() + Path.GetExtension(file.FileName);
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\uploads", file.FileName);
             FileStream fileStream = System.IO.File.Create(filePath);
             await file.CopyToAsync(fileStream);
             fileStream.Close();
 
-            var newWitness = new Witness
-            {
-                WitnessImage = imageName,
-                CaseId = id
-            };
-
-            await databaseContext.AddAsync(newWitness);
+            witness.CaseId = id;
+            await databaseContext.AddAsync(witness);
             await databaseContext.SaveChangesAsync();
 
             return Ok();
@@ -57,7 +50,6 @@ namespace CriminalDatabaseBackend.Features.Witness
 
             return Ok(witness);
         }
-
 
     }
 }
