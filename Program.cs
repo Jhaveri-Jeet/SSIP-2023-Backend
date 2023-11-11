@@ -22,14 +22,7 @@ app.UseCors(x => x
     .AllowAnyMethod()
     .AllowAnyHeader());
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(@"D:\Jeet Jhaveri\Projects\.Net\CriminalDatabaseBackend\Shared\Images"),
-    RequestPath = "/images" 
-});
-
+app.UseStaticFiles();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
