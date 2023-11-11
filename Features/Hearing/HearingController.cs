@@ -44,6 +44,18 @@ namespace CriminalDatabaseBackend.Features.Hearing
             return Ok(hearing);
         }
 
+        [HttpGet("/HearingAccCase/{caseId}")]
+        public async Task<IActionResult> GetByCase([FromRoute] int caseId)
+        {
+            var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == caseId);
+            if (cases == null) { return NotFound(); };
+
+            var hearing = await databaseContext.Hearing.Where(h => h.CaseId == caseId).ToListAsync();
+            if (hearing == null) { return NotFound(); }
+
+            return Ok(hearing);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateHearing([FromBody] Hearing hearing, [FromRoute] int id)
         {

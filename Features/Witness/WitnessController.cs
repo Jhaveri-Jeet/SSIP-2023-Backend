@@ -51,5 +51,17 @@ namespace CriminalDatabaseBackend.Features.Witness
             return Ok(witness);
         }
 
+        [HttpGet("/WitnessAccCase/{caseId}")]
+        public async Task<IActionResult> GetByCase([FromRoute] int caseId)
+        {
+            var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == caseId);
+            if(cases is null) return NotFound();
+
+            var witness = await databaseContext.Witness.Where(w => w.CaseId == caseId).ToListAsync();
+            if (witness is null) return NotFound();
+
+            return Ok(witness);
+        }
+
     }
 }

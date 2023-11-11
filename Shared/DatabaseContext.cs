@@ -10,8 +10,8 @@ using CriminalDatabaseBackend.Features.Sections;
 using CriminalDatabaseBackend.Features.States;
 using CriminalDatabaseBackend.Features.Users;
 using CriminalDatabaseBackend.Features.Witness;
+using CriminalDatabaseBackend.Features.Evidences;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Policy;
 
 namespace CriminalDatabaseBackend.Shared
 {
@@ -37,6 +37,7 @@ namespace CriminalDatabaseBackend.Shared
         public virtual DbSet<Cases> Cases { get; set; }
         public virtual DbSet<Hearing> Hearing { get; set; }
         public virtual DbSet<Witness> Witness { get; set; }
+        public virtual DbSet<Evidences> Evidences { get; set; }
 
     }
 }
