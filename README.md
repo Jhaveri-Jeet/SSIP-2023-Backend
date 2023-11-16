@@ -41,4 +41,4 @@ The Criminal Case Management System Backend is responsible for handling data ope
 
 ## API Documentation
 
-Detailed API documentation can be found [here](#)
+Detailed API documentation can be found [here](https://github.com/Jhaveri-Jeet/SSIP-2023-Backend/blob/main/ApiList.txt)
