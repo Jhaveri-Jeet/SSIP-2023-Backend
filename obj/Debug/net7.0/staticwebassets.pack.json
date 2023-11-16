@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\WitnessImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg"
     },
     {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\download.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\download.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.CriminalDatabaseBackend.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
