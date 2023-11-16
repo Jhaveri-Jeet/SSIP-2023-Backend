@@ -1,0 +1,255 @@
+U can use your IP Address instead of localhost
+
+
+Acts API:
+
+// To get all Acts
+1. [GET]  http://localhost:5000/Acts
+
+// To insert Acts
+2. [POST] http://localhost:5000/Acts
+
+// To fetch particular Acts
+3. [GET]  http://localhost:5000/Acts/{actId}
+
+// To update Acts
+4. [PUT]  http://localhost:5000/Acts/{actId}
+
+// To delete Acts
+5. [DELETE]  http://localhost:5000/Acts/{actId}
+
+
+
+
+Advocates API:
+
+// To get all Advocates
+6. [GET]  http://localhost:5000/Advocates
+
+// To insert Advocates
+7. [POST] http://localhost:5000/Advocates
+
+// To fetch particular Advocates
+8. [GET]  http://localhost:5000/Advocates/{advocateId}
+
+// To update Advocates
+9. [PUT]  http://localhost:5000/Advocates/{advocateId}
+
+// To delete Advocates
+10. [DELETE]  http://localhost:5000/Advocates/{advocateId}
+
+
+
+
+Cases API:
+
+// To get all Cases
+11. [GET]  http://localhost:5000/Cases
+
+// To insert Cases
+12. [POST] http://localhost:5000/Cases/{caseTypeId}/{courtId}/{actId}/{advocateId}/{attorneyId}/{roleId}
+
+// To fetch particular Cases
+13. [GET]  http://localhost:5000/Cases/{caseId}
+
+// To get the count of total case
+14. [GET]  http://localhost:5000/TotalCases
+
+// To get the count of total case according to the roles
+15. [GET]  http://localhost:5000/TotalCasesCount/{roleId}
+
+// To get the cases according to the roles
+16. [GET]  http://localhost:5000/TotalCasesDisplay/{roleId}
+
+// To get the count of total pending cases according to the roles
+17. [GET]  http://localhost:5000/TotalPendingCases/{roleId}
+
+// To get the count of total completed cases according to the roles
+18. [GET]  http://localhost:5000/TotalCompletedCases/{roleId}
+
+// To get the count of total running cases according to the roles
+19. [GET]  http://localhost:5000/TotalRunningCases/{roleId}
+
+// To get the cases including the data of transfered cases
+20. [GET]  http://localhost:5000/FetchCasesIncludingTransfered/{roleId}
+
+// To update Cases
+21. [PUT]  http://localhost:5000/Cases/{caseId}
+
+
+
+CaseType API:
+
+// To get all CaseType
+22. [GET]  http://localhost:5000/CaseType
+
+// To insert CaseType
+23. [POST] http://localhost:5000/CaseType
+
+// To fetch particular CaseType
+24. [GET]  http://localhost:5000/CaseType/{caseTypeId}	
+
+// To update CaseType
+25. [PUT]  http://localhost:5000/CaseType/{caseTypeId}
+
+// To delete CaseType
+26. [DELETE]  http://localhost:5000/CaseType/{caseTypeId}
+
+
+
+Courts API:
+
+// To get all Courts
+27. [GET]  http://localhost:5000/Courts
+
+// To insert Courts
+28. [POST] http://localhost:5000/Courts/{stateId}/{districtId}/{roleId}
+
+// To fetch particular Courts
+29. [GET]  http://localhost:5000/Courts/{courtId}	
+
+// To update Courts
+30. [PUT]  http://localhost:5000/Courts/{courtId}
+
+
+
+Districts API:
+
+// To get all Districts
+31. [GET]  http://localhost:5000/Districts
+
+// To insert Districts
+32. [POST] http://localhost:5000/Districts
+
+// To fetch particular Districts
+33. [GET]  http://localhost:5000/Districts/{caseTypeId}	
+
+// To update Districts
+34. [PUT]  http://localhost:5000/Districts/{caseTypeId}
+
+// To delete Districts
+35. [DELETE]  http://localhost:5000/Districts/{caseTypeId}
+
+
+
+Evidences API:
+
+// To get all Evidences
+36. [GET]  http://localhost:5000/Evidences
+
+// To insert Evidences
+37. [POST] http://localhost:5000/Evidences/{caseId}
+
+// To fetch particular Evidences
+38. [GET]  http://localhost:5000/Evidences/{evidencesId}	
+
+// To fetch evidences according to the case
+39. [GET] http://localhost:5000/EvidenceAccCase/{caseId}
+
+
+
+Hearing API:
+
+// To get all Hearing
+40. [GET]  http://localhost:5000/Hearing
+
+// To insert Hearing
+41. [POST] http://localhost:5000/Hearing/{caseId}
+
+// To fetch particular Hearing
+42. [GET]  http://localhost:5000/Hearing/{evidencesId}	
+
+// To fetch evidences according to the case
+43. [GET] http://localhost:5000/HearingAccCase/{caseId}
+
+
+
+Roles API:
+
+// To get all Roles
+44. [GET]  http://localhost:5000/Roles
+
+// To insert Roles
+45. [POST] http://localhost:5000/Roles
+
+// To fetch particular Roles
+46. [GET]  http://localhost:5000/Roles/{roleId}
+
+// To update Roles
+47. [PUT]  http://localhost:5000/Roles/{roleId}
+
+// To delete Roles
+48. [DELETE]  http://localhost:5000/Roles/{roleId}
+
+
+
+Sections API:
+
+// To get all Sections
+49. [GET]  http://localhost:5000/Sections
+
+// To insert Sections
+50. [POST] http://localhost:5000/Sections/{actId}
+
+// To fetch particular Sections
+51. [GET]  http://localhost:5000/Sections/{sectionId}
+
+// To update Sections
+52. [PUT]  http://localhost:5000/Sections/{sectionId}
+
+
+
+States API:
+
+// To get all States	
+53. [GET]  http://localhost:5000/States
+
+// To insert States
+54. [POST] http://localhost:5000/States
+
+// To fetch particular States
+55. [GET]  http://localhost:5000/States/{stateId}
+
+// To update States
+56. [PUT]  http://localhost:5000/States/{stateId}
+
+// To delete States
+57. [DELETE]  http://localhost:5000/States/{stateId}
+
+
+
+Users API:
+
+// To get all Users	
+58. [GET]  http://localhost:5000/Users
+
+// To insert Users
+59. [POST] http://localhost:5000/Users/{roleId}/{districtId}/{courtId}
+
+// To fetch particular Users
+60. [GET]  http://localhost:5000/Users/{userId}
+
+// To check the user
+61. [GET]  http://localhost:5000/CheckUser/{roleId}/{districtId}/{courtId}/{passwordHash}
+
+// To fetch court according to role and district
+62. [GET]  http://localhost:5000/FetchCourtAccRoleAndDis/{roleId}/{districtId}
+
+// To update Users
+63. [PUT]  http://localhost:5000/Users/{userId}
+
+
+
+Witness API:
+
+// To get all Witness
+64. [GET]  http://localhost:5000/Witness
+
+// To insert Witness
+65. [POST] http://localhost:5000/Witness/{caseId}
+
+// To fetch particular Witness
+66. [GET]  http://localhost:5000/Witness/{evidencesId}	
+
+// To fetch Witness according to the case
+67. [GET] http://localhost:5000/WitnessAccCase/{caseId}
