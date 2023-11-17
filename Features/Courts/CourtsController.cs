@@ -16,7 +16,6 @@ namespace CriminalDatabaseBackend.Features.Courts
         }
 
         [HttpPost("{stateId}/{districtId}/{roleId}")]
-
         public async Task<IActionResult> AddCourts([FromRoute] int stateId, [FromRoute] int districtId, [FromRoute] int roleId, [FromBody] Courts court)
         {
             var state = await databaseContext.States.FirstOrDefaultAsync(s => s.Id == stateId);
@@ -35,7 +34,7 @@ namespace CriminalDatabaseBackend.Features.Courts
             await databaseContext.AddAsync(court);
             await databaseContext.SaveChangesAsync();
 
-            return Ok("Court Added");
+            return Ok(court.Id);
         }
 
         [HttpGet]

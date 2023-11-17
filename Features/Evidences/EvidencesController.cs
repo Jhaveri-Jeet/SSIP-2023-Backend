@@ -34,7 +34,7 @@ namespace CriminalDatabaseBackend.Features.Evidences
             return Ok("Evidence Added !");
         }
 
-        [HttpGet]
+        [HttpGet]   
         public async Task<IActionResult> GetAll()
         {
             var evidence = await databaseContext.Evidences.Include(evidence => evidence.Case).ToListAsync();
