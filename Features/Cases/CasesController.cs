@@ -38,6 +38,7 @@ namespace CriminalDatabaseBackend.Features.Cases
             var role = await databaseContext.Roles.FirstOrDefaultAsync(role => role.Id == roleId);
             if (attorney == null) return NotFound();
 
+            cases.CaseStatus = "Pending";
             cases.CaseTypeId = caseTypeId;
             cases.CourtId = courtId;
             cases.ActId = actId;
