@@ -230,7 +230,7 @@ Users API:
 60. [GET]  http://localhost:5000/Users/{userId}
 
 // To check the user
-61. [GET]  http://localhost:5000/CheckUser/{roleId}/{districtId}/{courtId}/{passwordHash}
+61. [GET]  http://localhost:5000/CheckUser/{userId}/{passwordHash}
 
 // To fetch court according to role and district
 62. [GET]  http://localhost:5000/FetchCourtAccRoleAndDis/{roleId}/{districtId}
