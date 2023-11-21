@@ -238,6 +238,9 @@ Users API:
 // To update Users
 63. [PUT]  http://localhost:5000/Users/{userId}
 
+// To fetch users according to role and district
+64: [GET] http://localhost:5000/FetchUserAccCourtAndDis/{roleId}/{districtId}
+
 
 
 Witness API:

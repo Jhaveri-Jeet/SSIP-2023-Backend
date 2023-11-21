@@ -60,10 +60,10 @@ namespace CriminalDatabaseBackend.Features.Users
             return Ok(courtAccRoleAndDis);
         }
 
-        [HttpGet("/FetchUserAccCourtAndDis/{courtId}/{districtId}")]
-        public async Task<IActionResult> FetchUserAccCourtAndDis([FromRoute] int courtId, [FromRoute] int districtId)
+        [HttpGet("/FetchUserAccCourtAndDis/{roleId}/{districtId}")]
+        public async Task<IActionResult> FetchUserAccCourtAndDis([FromRoute] int roleId, [FromRoute] int districtId)
         {
-            var user = await databaseContext.Users.Where(u => u.CourtId == courtId && u.DistrictId == districtId).ToListAsync();
+            var user = await databaseContext.Users.Where(u => u.RoleId == roleId && u.DistrictId == districtId).ToListAsync();
             if (user == null) { return NotFound(); }
 
             return Ok(user);
