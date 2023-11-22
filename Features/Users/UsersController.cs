@@ -12,7 +12,6 @@ namespace CriminalDatabaseBackend.Features.Users
 {
     [Route("/[controller]")]
     [ApiController]
-    [Authorize]
     public class UsersController : Controller
     {
         private readonly DatabaseContext databaseContext;
@@ -59,6 +58,7 @@ namespace CriminalDatabaseBackend.Features.Users
             return tokenString;
         }
 
+        [Authorize]
         [HttpPost("{roleId}/{districtId}/{courtId}")]
         public async Task<IActionResult> AddUser([FromRoute] int roleId, [FromRoute] int districtId, [FromRoute] int courtId, [FromBody] Users users)
         {
@@ -124,6 +124,7 @@ namespace CriminalDatabaseBackend.Features.Users
             return Ok(new { Token = token });
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser([FromBody] Users users, [FromRoute] int id)
         {

@@ -7,7 +7,6 @@ namespace CriminalDatabaseBackend.Features.Districts
 {
     [Route("/[controller]")]
     [ApiController]
-    [Authorize]
     public class DistrictsController : Controller
     {
         private readonly DatabaseContext databaseContext;
@@ -17,6 +16,7 @@ namespace CriminalDatabaseBackend.Features.Districts
             this.databaseContext = databaseContext;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddDistrict([FromBody] Districts district)
         {
@@ -42,6 +42,7 @@ namespace CriminalDatabaseBackend.Features.Districts
             return Ok(district);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDistrict([FromBody] Districts district, [FromRoute] int id)
         {
@@ -55,6 +56,7 @@ namespace CriminalDatabaseBackend.Features.Districts
             return Ok("District Updated !");
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDistrict([FromRoute] int id)
         {

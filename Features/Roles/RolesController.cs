@@ -7,7 +7,6 @@ namespace CriminalDatabaseBackend.Features.Roles
 {
     [Route("/[controller]")]
     [ApiController]
-    [Authorize]
     public class RolesController : Controller
     {
         private readonly DatabaseContext databaseContext;
@@ -17,6 +16,7 @@ namespace CriminalDatabaseBackend.Features.Roles
             this.databaseContext = databaseContext;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddRoles([FromBody] Roles roles)
         {
@@ -41,6 +41,7 @@ namespace CriminalDatabaseBackend.Features.Roles
             return Ok(roles);
         }
 
+        [Authorize]
         [HttpPut("id")]
         public async Task<IActionResult> UpdateRoles([FromRoute] int id, [FromBody] Roles roles)
         {
@@ -52,6 +53,7 @@ namespace CriminalDatabaseBackend.Features.Roles
             return Ok("Roles Updated !");
         }
 
+        [Authorize]
         [HttpDelete("id")]
         public async Task<IActionResult> DeleteRoles([FromRoute] int id)
         {
