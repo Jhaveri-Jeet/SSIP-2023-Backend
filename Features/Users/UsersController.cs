@@ -1,6 +1,11 @@
 ﻿using CriminalDatabaseBackend.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace CriminalDatabaseBackend.Features.Users
 {
@@ -9,10 +14,47 @@ namespace CriminalDatabaseBackend.Features.Users
     public class UsersController : Controller
     {
         private readonly DatabaseContext databaseContext;
+        private readonly AppSettings appSettings;
+        //private readonly IWebHostEnvironment env;
 
-        public UsersController(DatabaseContext databaseContext)
+        public UsersController(DatabaseContext databaseContext, IOptions<AppSettings> appSettings)
         {
             this.databaseContext = databaseContext;
+            this.appSettings = appSettings.Value;
+            //this.env = env;
+        }
+
+        // JWT function which will return the generated token 
+        private async Task<string> GenerateJwtAsync(Users user)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSettings.JWTSecurityKey));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+
+            var claimsIdentity = new ClaimsIdentity(new Claim[]
+            {
+                new(ClaimTypes.Name, user.Id.ToString()),
+                new(ClaimTypes.Role, user.RoleId.ToString()),
+                new("districtId", user.DistrictId.ToString())
+            });
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = claimsIdentity,
+                SigningCredentials = credentials
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenString = tokenHandler.WriteToken(token);
+
+            Response.Cookies.Append("token", tokenString, new CookieOptions
+            {
+                HttpOnly = true,
+                SameSite = SameSiteMode.None,
+                //Secure = !env.IsDevelopment(),
+            });
+
+            return tokenString;
         }
 
         [HttpPost("{roleId}/{districtId}/{courtId}")]
@@ -68,13 +110,16 @@ namespace CriminalDatabaseBackend.Features.Users
 
             return Ok(user);
         }
+
         [HttpGet("/CheckUser/{userId}/{passwordHash}")]
         public async Task<IActionResult> CheckUser([FromRoute] int userId, [FromRoute] string passwordHash)
         {
             var user = await databaseContext.Users.FirstOrDefaultAsync(u => u.Id == userId && u.PasswordHash == passwordHash);
             if (user == null) { return NotFound(); }
 
-            return Ok(user);
+            string token = await GenerateJwtAsync(user);
+
+            return Ok(new { Token = token });
         }
 
         [HttpPut("{id}")]

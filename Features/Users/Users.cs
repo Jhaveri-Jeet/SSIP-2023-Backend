@@ -11,7 +11,6 @@ namespace CriminalDatabaseBackend.Features.Users
         public string? UserName { get; set; }
         public string? PasswordHash { get; set; }
 
-
         [ForeignKey(nameof(RoleId))]
         public int RoleId { get; set; }
         public virtual Roles.Roles? Role { get; set; }
