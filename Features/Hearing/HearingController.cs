@@ -1,4 +1,5 @@
 ﻿using CriminalDatabaseBackend.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +7,7 @@ namespace CriminalDatabaseBackend.Features.Hearing
 {
     [Route("/[controller]")]
     [ApiController]
+    [Authorize]
     public class HearingController : Controller
     {
         private readonly DatabaseContext databaseContext;

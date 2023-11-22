@@ -1,5 +1,6 @@
 ﻿using CriminalDatabaseBackend.Features.Cases;
 using CriminalDatabaseBackend.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Composition;
@@ -8,6 +9,7 @@ namespace CriminalDatabaseBackend.Features.Cases
 {
     [Route("/[controller]")]
     [ApiController]
+    [Authorize]
     public class CasesController : Controller
     {
         private readonly DatabaseContext databaseContext;

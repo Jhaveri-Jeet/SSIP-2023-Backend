@@ -1,4 +1,5 @@
 ﻿using CriminalDatabaseBackend.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static System.Collections.Specialized.BitVector32;
@@ -7,6 +8,7 @@ namespace CriminalDatabaseBackend.Features.Sections
 {
     [Route("/[controller]")]
     [ApiController]
+    [Authorize]
     public class SectionsController : Controller
     {
         private readonly DatabaseContext databaseContext;

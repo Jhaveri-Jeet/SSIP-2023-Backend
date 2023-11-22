@@ -1,4 +1,5 @@
 ﻿using CriminalDatabaseBackend.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ namespace CriminalDatabaseBackend.Features.Advocates
 {
     [Route("/[controller]")]
     [ApiController]
+    [Authorize]
     public class AdvocatesController : Controller
     {
         private readonly DatabaseContext databaseContext;

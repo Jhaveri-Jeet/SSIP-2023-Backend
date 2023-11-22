@@ -1,5 +1,6 @@
 ﻿using CriminalDatabaseBackend.Shared;
 using Humanizer.Localisation.TimeToClockNotation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ namespace CriminalDatabaseBackend.Features.Acts
 {
     [Route("/[controller]")]
     [ApiController]
+    [Authorize]
     public class ActsController : Controller
     {
         private readonly DatabaseContext databaseContext;

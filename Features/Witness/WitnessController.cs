@@ -1,4 +1,5 @@
 ﻿using CriminalDatabaseBackend.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
@@ -7,6 +8,7 @@ namespace CriminalDatabaseBackend.Features.Witness
 {
     [Route("/[controller]")]
     [ApiController]
+    [Authorize]
     public class WitnessController : Controller
     {
         private readonly DatabaseContext databaseContext;
