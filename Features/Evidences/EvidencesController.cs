@@ -17,10 +17,10 @@ namespace CriminalDatabaseBackend.Features.Evidences
             this.databaseContext = databaseContext;
         }
 
-        [HttpPost("{id}"), DisableRequestSizeLimit]
-        public async Task<IActionResult> AddWitness([FromRoute] int id, [FromForm] IFormFile file, [FromForm] Evidences evidence)
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<IActionResult> AddWitness([FromForm] IFormFile file, [FromForm] Evidences evidence)
         {
-            var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == id);
+            var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == evidence.CaseId);
             if (cases is null) return NotFound();
 
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\EvidenceImages", file.FileName);
@@ -28,7 +28,6 @@ namespace CriminalDatabaseBackend.Features.Evidences
             await file.CopyToAsync(fileStream);
             fileStream.Close();
 
-            evidence.CaseId = id;
             evidence.EvidenceImageName = file.FileName;
             await databaseContext.AddAsync(evidence);
             await databaseContext.SaveChangesAsync();
