@@ -18,13 +18,12 @@ namespace CriminalDatabaseBackend.Features.Hearing
         }
 
 
-        [HttpPost("{caseId}")]
-        public async Task<IActionResult> AddHearing([FromRoute] int caseId, [FromBody] Hearing hearing)
+        [HttpPost]
+        public async Task<IActionResult> AddHearing([FromBody] Hearing hearing)
         {
-            var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == caseId);
+            var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == hearing.CaseId);
             if (cases == null) { return NotFound(); }
 
-            hearing.CaseId = caseId;
             await databaseContext.AddAsync(hearing);
             await databaseContext.SaveChangesAsync();
             return Ok("Hearing Created !");

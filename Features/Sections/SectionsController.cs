@@ -18,13 +18,12 @@ namespace CriminalDatabaseBackend.Features.Sections
             this.databaseContext = databaseContext;
         }
 
-        [HttpPost("{actId}")]
-        public async Task<IActionResult> AddSection([FromRoute] int actId, [FromBody] Sections section)
+        [HttpPost]
+        public async Task<IActionResult> AddSection([FromBody] Sections section)
         {
-            var act = await databaseContext.Acts.FirstOrDefaultAsync(s => s.Id == actId);
+            var act = await databaseContext.Acts.FirstOrDefaultAsync(s => s.Id == section.ActId);
             if (act == null) { return NotFound(); }
 
-            section.ActId = actId;
             await databaseContext.AddAsync(section);
             await databaseContext.SaveChangesAsync();
             return Ok("Section Added !");

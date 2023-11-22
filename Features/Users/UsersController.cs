@@ -35,7 +35,8 @@ namespace CriminalDatabaseBackend.Features.Users
             {
                 new(ClaimTypes.Name, user.Id.ToString()),
                 new(ClaimTypes.Role, user.RoleId.ToString()),
-                new("districtId", user.DistrictId.ToString())
+                new("districtId", user.DistrictId.ToString()),
+                new("courtId", user.CourtId.ToString())
             });
 
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -59,21 +60,18 @@ namespace CriminalDatabaseBackend.Features.Users
         }
 
         [Authorize]
-        [HttpPost("{roleId}/{districtId}/{courtId}")]
-        public async Task<IActionResult> AddUser([FromRoute] int roleId, [FromRoute] int districtId, [FromRoute] int courtId, [FromBody] Users users)
+        [HttpPost]
+        public async Task<IActionResult> AddUser([FromBody] Users users)
         {
-            var role = await databaseContext.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
+            var role = await databaseContext.Roles.FirstOrDefaultAsync(r => r.Id == users.RoleId);
             if (role == null) { return NotFound(); }
 
-            var district = await databaseContext.Districts.FirstOrDefaultAsync(r => r.Id == districtId);
+            var district = await databaseContext.Districts.FirstOrDefaultAsync(r => r.Id == users.DistrictId);
             if (district == null) { return NotFound(); }
 
-            var court = await databaseContext.Courts.FirstOrDefaultAsync(r => r.Id == courtId);
+            var court = await databaseContext.Courts.FirstOrDefaultAsync(r => r.Id == users.CourtId);
             if (court == null) { return NotFound(); }
 
-            users.RoleId = roleId;
-            users.DistrictId = districtId;
-            users.CourtId = courtId;
             await databaseContext.AddAsync(users);
             await databaseContext.SaveChangesAsync();
             return Ok("User Created !");

@@ -17,21 +17,17 @@ namespace CriminalDatabaseBackend.Features.Courts
             this.databaseContext = databaseContext;
         }
 
-        [HttpPost("{stateId}/{districtId}/{roleId}")]
-        public async Task<IActionResult> AddCourts([FromRoute] int stateId, [FromRoute] int districtId, [FromRoute] int roleId, [FromBody] Courts court)
+        [HttpPost]
+        public async Task<IActionResult> AddCourts([FromBody] Courts court)
         {
-            var state = await databaseContext.States.FirstOrDefaultAsync(s => s.Id == stateId);
+            var state = await databaseContext.States.FirstOrDefaultAsync(s => s.Id == court.StateId);
             if (state == null) { return NotFound(); }
 
-            var district = await databaseContext.Districts.FirstOrDefaultAsync(s => s.Id == districtId);
+            var district = await databaseContext.Districts.FirstOrDefaultAsync(s => s.Id == court.DistrictId);
             if (district == null) { return NotFound(); }
 
-            var role = await databaseContext.Roles.FirstOrDefaultAsync(s => s.Id == roleId);
+            var role = await databaseContext.Roles.FirstOrDefaultAsync(s => s.Id == court.RoleId);
             if (role == null) { return NotFound(); }
-
-            court.StateId = stateId;
-            court.DistrictId = districtId;
-            court.RoleId = roleId;
 
             await databaseContext.AddAsync(court);
             await databaseContext.SaveChangesAsync();

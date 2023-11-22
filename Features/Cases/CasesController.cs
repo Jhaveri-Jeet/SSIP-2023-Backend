@@ -19,36 +19,30 @@ namespace CriminalDatabaseBackend.Features.Cases
             this.databaseContext = databaseContext;
         }
 
-        [HttpPost("{caseTypeId}/{courtId}/{actId}/{advocateId}/{attorneyId}/{roleId}")]
-        public async Task<IActionResult> AddCase([FromRoute] int caseTypeId, [FromRoute] int courtId, [FromRoute] int actId, [FromRoute] int advocateId, [FromRoute] int attorneyId, [FromRoute] int roleId, [FromBody] Cases cases)
+        [HttpPost]
+        public async Task<IActionResult> AddCase([FromBody] Cases cases)
         {
-            var caseType = await databaseContext.CaseTypes.FirstOrDefaultAsync(c => c.Id == caseTypeId);
+            var caseType = await databaseContext.CaseTypes.FirstOrDefaultAsync(c => c.Id == cases.CaseTypeId);
             if (caseType == null) return NotFound();
 
-            var court = await databaseContext.Courts.FirstOrDefaultAsync(court => court.Id == courtId);
+            var court = await databaseContext.Courts.FirstOrDefaultAsync(court => court.Id == cases.CourtId);
             if (court == null) return NotFound();
 
-            var act = await databaseContext.Acts.FirstOrDefaultAsync(act => act.Id == actId);
+            var act = await databaseContext.Acts.FirstOrDefaultAsync(act => act.Id == cases.ActId);
             if (act == null) return NotFound();
 
-            var advocate = await databaseContext.Advocates.FirstOrDefaultAsync(advocate => advocate.Id == advocateId);
+            var advocate = await databaseContext.Advocates.FirstOrDefaultAsync(advocate => advocate.Id == cases.AdvocateId);
             if (advocate == null) return NotFound();
 
-            var attorney = await databaseContext.Advocates.FirstOrDefaultAsync(attorney => attorney.Id == attorneyId);
+            var attorney = await databaseContext.Advocates.FirstOrDefaultAsync(attorney => attorney.Id == cases.AttorneyId);
             if (attorney == null) return NotFound();
 
-            var role = await databaseContext.Roles.FirstOrDefaultAsync(role => role.Id == roleId);
+            var role = await databaseContext.Roles.FirstOrDefaultAsync(role => role.Id == cases.RoleId);
             if (attorney == null) return NotFound();
 
             cases.CaseStatus = "Pending";
-            cases.CaseTypeId = caseTypeId;
-            cases.CourtId = courtId;
-            cases.ActId = actId;
-            cases.AdvocateId = advocateId;
-            cases.AttorneyId = attorneyId;
-            cases.RoleId = roleId;
-            cases.TransferFromId = roleId;
-            cases.TransferToId = roleId;
+            cases.TransferFromId = cases.RoleId;
+            cases.TransferToId = cases.RoleId;
 
             await databaseContext.AddAsync(cases);
             await databaseContext.SaveChangesAsync();
