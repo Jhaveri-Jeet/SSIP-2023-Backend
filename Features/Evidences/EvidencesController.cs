@@ -21,7 +21,7 @@ namespace CriminalDatabaseBackend.Features.Evidences
         public async Task<IActionResult> AddWitness([FromForm] IFormFile file, [FromForm] Evidences evidence)
         {
             var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == evidence.CaseId);
-            if (cases is null) return NotFound();
+            if (cases == null) return NotFound("Case not found");
 
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\EvidenceImages", file.FileName);
             FileStream fileStream = System.IO.File.Create(filePath);
@@ -39,6 +39,8 @@ namespace CriminalDatabaseBackend.Features.Evidences
         public async Task<IActionResult> GetAll()
         {
             var evidence = await databaseContext.Evidences.Include(evidence => evidence.Case).ToListAsync();
+            if (evidence == null) return NotFound("Evidence not found");
+
             return Ok(evidence);
         }
 
@@ -46,7 +48,7 @@ namespace CriminalDatabaseBackend.Features.Evidences
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var evidence = await databaseContext.Evidences.Include(evidence => evidence.Case).FirstOrDefaultAsync(e => e.Id == id);
-            if(evidence is null) return NotFound();
+            if(evidence == null) return NotFound("Evidence not found");
 
             return Ok(evidence);
         }
@@ -55,10 +57,10 @@ namespace CriminalDatabaseBackend.Features.Evidences
         public async Task<IActionResult> GetByCase([FromRoute] int caseId)
         {
             var cases = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == caseId);
-            if (cases is null) return NotFound();
+            if (cases == null) return NotFound("Case not found");
 
             var evidence = await databaseContext.Evidences.Where(e => e.CaseId == caseId).ToListAsync();
-            if(evidence is null) return NotFound();
+            if(evidence == null) return NotFound("Evidence not found");
 
             return Ok(evidence);
         }

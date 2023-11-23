@@ -53,6 +53,18 @@ namespace CriminalDatabaseBackend.Features.Courts
             return Ok(court);
         }
 
+        [HttpGet("/FetchCourtsAccRole/{roleId}")]
+        public async Task<IActionResult> FetchCourtAccRole([FromRoute] int roleId)
+        {
+            var role = await databaseContext.Roles.FirstOrDefaultAsync(c => c.Id == roleId);
+            if (role == null) return NotFound("Role not found");
+
+            var court = await databaseContext.Courts.Where(court => court.RoleId == roleId).ToListAsync();
+            if (court == null) return NotFound("Court not found");
+
+            return Ok(court);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCourt([FromBody] Courts court, [FromRoute] int id)
         {
