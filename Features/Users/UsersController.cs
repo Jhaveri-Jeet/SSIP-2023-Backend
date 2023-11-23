@@ -64,13 +64,13 @@ namespace CriminalDatabaseBackend.Features.Users
         public async Task<IActionResult> AddUser([FromBody] Users users)
         {
             var role = await databaseContext.Roles.FirstOrDefaultAsync(r => r.Id == users.RoleId);
-            if (role == null) { return NotFound(); }
+            if (role == null) return NotFound("Role not found");
 
             var district = await databaseContext.Districts.FirstOrDefaultAsync(r => r.Id == users.DistrictId);
-            if (district == null) { return NotFound(); }
+            if (district == null) return NotFound("District not found");
 
             var court = await databaseContext.Courts.FirstOrDefaultAsync(r => r.Id == users.CourtId);
-            if (court == null) { return NotFound(); }
+            if (court == null) return NotFound("Court not found");
 
             await databaseContext.AddAsync(users);
             await databaseContext.SaveChangesAsync();
@@ -81,7 +81,8 @@ namespace CriminalDatabaseBackend.Features.Users
         public async Task<IActionResult> GetAll()
         {
             var users = await databaseContext.Users.Include(users => users.Role).Include(users => users.District).Include(users => users.Court).ToListAsync();
-            if (users == null) { return NotFound(); }
+            if (users == null) return NotFound("User not found");
+
             return Ok(users);
         }
 
@@ -89,15 +90,22 @@ namespace CriminalDatabaseBackend.Features.Users
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var users = await databaseContext.Users.Include(users => users.Role).Include(users => users.District).Include(users => users.Court).FirstOrDefaultAsync(u => u.Id == id);
-            if (users == null) { return NotFound(); }
+            if (users == null) return NotFound("User not found");
+
             return Ok(users);
         }
 
         [HttpGet("/FetchCourtAccRoleAndDis/{roleId}/{districtId}")]
         public async Task<IActionResult> FetchCourtAccRoleAndDis([FromRoute] int roleId, [FromRoute] int districtId)
         {
+            var role = await databaseContext.Roles.FirstOrDefaultAsync(u => u.Id == roleId);
+            if (role == null) return NotFound("Role not found");
+
+            var district = await databaseContext.Districts.FirstOrDefaultAsync(d => d.Id == districtId);
+            if (district == null) return NotFound("District not found");
+
             var courtAccRoleAndDis = await databaseContext.Courts.Where(c => c.RoleId == roleId && c.DistrictId == districtId).ToListAsync();
-            if (courtAccRoleAndDis == null) { return NotFound(); }
+            if (courtAccRoleAndDis == null) return NotFound("Court not found");
 
             return Ok(courtAccRoleAndDis);
         }
@@ -105,17 +113,37 @@ namespace CriminalDatabaseBackend.Features.Users
         [HttpGet("/FetchUserAccCourtAndDis/{roleId}/{districtId}")]
         public async Task<IActionResult> FetchUserAccCourtAndDis([FromRoute] int roleId, [FromRoute] int districtId)
         {
+            var role = await databaseContext.Roles.FirstOrDefaultAsync(u => u.Id == roleId);
+            if (role == null) return NotFound("Role not found");
+
+            var district = await databaseContext.Districts.FirstOrDefaultAsync(d => d.Id == districtId);
+            if (district == null) return NotFound("District not found");
+
             var user = await databaseContext.Users.Where(u => u.RoleId == roleId && u.DistrictId == districtId).ToListAsync();
-            if (user == null) { return NotFound(); }
+            if (user == null) return NotFound("User not found");
 
             return Ok(user);
+        }
+
+        [Authorize]
+        [HttpGet("/FetchUserAccCourt/{courtId}")]
+        public async Task<IActionResult> FetchUserAccCourt([FromRoute] int courtId)
+        {
+            var court = await databaseContext.Courts.FirstOrDefaultAsync(c => c.Id == courtId);
+            if (court == null) return NotFound("Court not found");
+
+            var user = await databaseContext.Users.Include(u => u.CourtId == courtId).ToListAsync();
+            if (user == null) return NotFound("User not found");
+
+            return Ok(user);
+
         }
 
         [HttpGet("/CheckUser/{userId}/{passwordHash}")]
         public async Task<IActionResult> CheckUser([FromRoute] int userId, [FromRoute] string passwordHash)
         {
             var user = await databaseContext.Users.FirstOrDefaultAsync(u => u.Id == userId && u.PasswordHash == passwordHash);
-            if (user == null) { return NotFound(); }
+            if (user == null) return NotFound("User not found");
 
             string token = await GenerateJwtAsync(user);
 
@@ -127,7 +155,7 @@ namespace CriminalDatabaseBackend.Features.Users
         public async Task<IActionResult> UpdateUser([FromBody] Users users, [FromRoute] int id)
         {
             var currentUser = await databaseContext.Users.FirstOrDefaultAsync(u => u.Id == id);
-            if (currentUser == null) { return NotFound(); };
+            if (currentUser == null) return NotFound("User not found");
 
             currentUser.UserName = users.UserName;
             currentUser.RoleId = users.RoleId;
