@@ -29,15 +29,17 @@ namespace CriminalDatabaseBackend.Features.States
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var advocates = await databaseContext.States.ToListAsync();
-            return Ok(advocates);
+            var states = await databaseContext.States.ToListAsync();
+            if (states == null) return NotFound("State not found");
+
+            return Ok(states);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var state = await databaseContext.States.FirstOrDefaultAsync(a => a.Id == id);
-            if (state is null) { return NotFound(); }
+            if (state is null) return NotFound("State not found");
 
             return Ok(state);
         }
@@ -46,12 +48,11 @@ namespace CriminalDatabaseBackend.Features.States
         public async Task<IActionResult> UpdateState([FromBody] States state, [FromRoute] int id)
         {
             var oldState = await databaseContext.States.FirstOrDefaultAsync(a => a.Id == id);
-            if (oldState is null) { return NotFound(); }
+            if (oldState is null) return NotFound("State not found");
 
             oldState.Name = state.Name;
 
             await databaseContext.SaveChangesAsync();
-
             return Ok("State Updated !");
         }
 
@@ -59,10 +60,10 @@ namespace CriminalDatabaseBackend.Features.States
         public async Task<IActionResult> DeleteState([FromRoute] int id)
         {
             var state = await databaseContext.States.FirstOrDefaultAsync(a => a.Id == id);
-            if (state is null) { return NotFound(id); }
+            if (state is null) return NotFound("State not found");
+
             databaseContext.Remove(state);
             await databaseContext.SaveChangesAsync();
-
             return Ok("State Deleted !");
         }
 
