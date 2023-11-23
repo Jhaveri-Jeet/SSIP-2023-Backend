@@ -38,7 +38,7 @@ namespace CriminalDatabaseBackend.Features.Advocates
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var advocate = await databaseContext.Advocates.FirstOrDefaultAsync(a => a.Id == id);
-            if (advocate is null) { return NotFound(); }
+            if (advocate == null) return NotFound("Advocate not found");
 
             return Ok(advocate);
         }
@@ -47,13 +47,12 @@ namespace CriminalDatabaseBackend.Features.Advocates
         public async Task<IActionResult> UpdateAdvocate([FromBody] Advocates advocate, [FromRoute] int id)
         {
             var oldAdvocate = await databaseContext.Advocates.FirstOrDefaultAsync(a => a.Id == id);
-            if (oldAdvocate is null) { return NotFound(); }
+            if (oldAdvocate == null) return NotFound("Advocate not found");
 
             oldAdvocate.Name = advocate.Name;
             oldAdvocate.EnrollmentNumber = advocate.EnrollmentNumber;
 
             await databaseContext.SaveChangesAsync();
-
             return Ok("Advocate Updated !");
         }
 
@@ -61,7 +60,7 @@ namespace CriminalDatabaseBackend.Features.Advocates
         public async Task<IActionResult> DeleteAdvocate([FromRoute] int id)
         {
             var advocate = await databaseContext.Advocates.FirstOrDefaultAsync(a => a.Id == id);
-            if (advocate is null) { return NotFound(id); }
+            if (advocate == null) return NotFound("Advocate not found");
 
             databaseContext.Remove(advocate);
             await databaseContext.SaveChangesAsync();
