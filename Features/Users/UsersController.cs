@@ -136,7 +136,6 @@ namespace CriminalDatabaseBackend.Features.Users
             if (user == null) return NotFound("User not found");
 
             return Ok(user);
-
         }
 
         [HttpGet("/CheckUser/{userId}/{passwordHash}")]
@@ -165,6 +164,28 @@ namespace CriminalDatabaseBackend.Features.Users
 
             await databaseContext.SaveChangesAsync();
             return Ok("User Updated");
+        }
+
+        [Authorize]
+        [HttpPut("/CheckPassword")]
+        public async Task<IActionResult> CheckPassword([FromBody] Users user)
+        {
+            var oldUser = await databaseContext.Users.FirstOrDefaultAsync(o => o.Id == user.Id && o.PasswordHash == user.PasswordHash);
+            if (oldUser == null) return NotFound("User not found");
+
+            return Ok("Old is Password Correct");
+        }
+
+        [Authorize]
+        [HttpPut("/UpdatePassword")]
+        public async Task<IActionResult> UpdatePassword([FromBody] Users user)
+        {
+            var oldUser = await databaseContext.Users.FirstOrDefaultAsync(o => o.Id == user.Id);
+            if (oldUser == null) return NotFound("User not found");
+
+            oldUser.PasswordHash = user.PasswordHash;
+            await databaseContext.SaveChangesAsync();
+            return Ok("Password Updated");
         }
     }
 }

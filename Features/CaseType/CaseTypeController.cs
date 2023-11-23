@@ -29,7 +29,8 @@ namespace CriminalDatabaseBackend.Features.CaseType
         public async Task<IActionResult> GetAllRoles()
         {
             var caseType = await databaseContext.CaseTypes.ToListAsync();
-            if (caseType == null) { return NotFound(); }
+            if (caseType == null) return NotFound("CaseType not found");
+
             return Ok(caseType);
         }
 
@@ -37,7 +38,8 @@ namespace CriminalDatabaseBackend.Features.CaseType
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var caseType = await databaseContext.CaseTypes.FirstOrDefaultAsync(c => c.Id == id);
-            if (caseType == null) { NotFound(); }
+            if (caseType == null) return NotFound("CaseType not found");
+
             return Ok(caseType);
         }
 
@@ -45,11 +47,12 @@ namespace CriminalDatabaseBackend.Features.CaseType
         public async Task<IActionResult> UpdateRoles([FromRoute] int id, [FromBody] CaseType caseType)
         {
             var CurrentcaseType = await databaseContext.CaseTypes.FirstOrDefaultAsync(r => r.Id == id);
-            if (caseType == null) { return NotFound(); }
+            if (caseType == null) return NotFound("CaseType not found");
+
             CurrentcaseType.Name = caseType.Name;
             CurrentcaseType.Description = caseType.Description;
-            await databaseContext.SaveChangesAsync();
 
+            await databaseContext.SaveChangesAsync();
             return Ok("CaseType Updated !");
         }
 
@@ -57,10 +60,10 @@ namespace CriminalDatabaseBackend.Features.CaseType
         public async Task<IActionResult> DeleteRoles([FromRoute] int id)
         {
             var findCaseType = await databaseContext.CaseTypes.FirstOrDefaultAsync(r => r.Id == id);
-            if (findCaseType == null) { return NotFound(); }
+            if (findCaseType == null) return NotFound("CaseType not found");
+
             databaseContext.Remove(findCaseType);
             await databaseContext.SaveChangesAsync();
-
             return Ok("CaseType Deleted !");
         }
     }

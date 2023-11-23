@@ -43,11 +43,11 @@ namespace CriminalDatabaseBackend.Features.Cases
 
         [ForeignKey(nameof(TransferToId))]
         public int TransferToId { get; set; }
-        public virtual Roles.Roles? TransferTo { get; set; }
+        public virtual Courts.Courts? TransferTo { get; set; }
 
         [ForeignKey(nameof(TransferFromId))]
         public int TransferFromId { get; set; }
-        public virtual Roles.Roles? TransferFrom { get; set; }
+        public virtual Courts.Courts? TransferFrom { get; set; }
 
     }
 }
