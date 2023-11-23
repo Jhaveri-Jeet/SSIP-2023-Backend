@@ -132,7 +132,7 @@ namespace CriminalDatabaseBackend.Features.Users
             var court = await databaseContext.Courts.FirstOrDefaultAsync(c => c.Id == courtId);
             if (court == null) return NotFound("Court not found");
 
-            var user = await databaseContext.Users.Include(u => u.CourtId == courtId).ToListAsync();
+            var user = await databaseContext.Users.Where(u => u.CourtId == courtId).ToListAsync();
             if (user == null) return NotFound("User not found");
 
             return Ok(user);
