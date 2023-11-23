@@ -22,7 +22,7 @@ namespace CriminalDatabaseBackend.Features.Sections
         public async Task<IActionResult> AddSection([FromBody] Sections section)
         {
             var act = await databaseContext.Acts.FirstOrDefaultAsync(s => s.Id == section.ActId);
-            if (act == null) { return NotFound(); }
+            if (act == null) return NotFound("Act not found");
 
             await databaseContext.AddAsync(section);
             await databaseContext.SaveChangesAsync();
@@ -33,7 +33,7 @@ namespace CriminalDatabaseBackend.Features.Sections
         public async Task<IActionResult> GetAll()
         {
             var sections = await databaseContext.Sections.Include(sections => sections.Act).ToListAsync();
-            if (sections == null) { return NotFound(); }
+            if (sections == null) return NotFound("Section not found");
 
             return Ok(sections);
         }
@@ -42,7 +42,7 @@ namespace CriminalDatabaseBackend.Features.Sections
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var section = await databaseContext.Sections.Include(section => section.Act).FirstOrDefaultAsync(x => x.Id == id);
-            if (section == null) { return NotFound(); }
+            if (section == null) return NotFound("Sections not found");
 
             return Ok(section);
         }
@@ -51,14 +51,13 @@ namespace CriminalDatabaseBackend.Features.Sections
         public async Task<IActionResult> UpdateSection([FromRoute] int id, [FromBody] Sections section)
         {
             var oldSection = await databaseContext.Sections.FirstOrDefaultAsync(x => x.Id == id);
-            if (oldSection == null) { return NotFound(); };
+            if (oldSection == null) return NotFound("Sections not found");
 
             oldSection.Name = section.Name;
             oldSection.Description = section.Description;
             oldSection.ActId = section.ActId;
 
             await databaseContext.SaveChangesAsync();
-
             return Ok("Section Updated !");
         }
     }
