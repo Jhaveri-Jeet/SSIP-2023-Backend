@@ -29,7 +29,8 @@ namespace CriminalDatabaseBackend.Features.Roles
         public async Task<IActionResult> GetAllRoles()
         {
             var roles = await databaseContext.Roles.ToListAsync();
-            if (roles == null) { return NotFound(); }
+            if (roles == null) return NotFound("Role not found");
+
             return Ok(roles);
         }
 
@@ -37,7 +38,8 @@ namespace CriminalDatabaseBackend.Features.Roles
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var roles = await databaseContext.Roles.FirstOrDefaultAsync(r => r.Id == id);
-            if (roles == null) { return NotFound(); }
+            if (roles == null) return NotFound("Role not found");
+
             return Ok(roles);
         }
 
@@ -46,10 +48,11 @@ namespace CriminalDatabaseBackend.Features.Roles
         public async Task<IActionResult> UpdateRoles([FromRoute] int id, [FromBody] Roles roles)
         {
             var currentRoles = await databaseContext.Roles.FirstOrDefaultAsync(r => r.Id == id);
-            if (roles == null) { return NotFound(); }
+            if (roles == null) return NotFound("Role not found");
+            
             currentRoles.Name = roles.Name;
-            await databaseContext.SaveChangesAsync();
 
+            await databaseContext.SaveChangesAsync();
             return Ok("Roles Updated !");
         }
 
@@ -58,7 +61,8 @@ namespace CriminalDatabaseBackend.Features.Roles
         public async Task<IActionResult> DeleteRoles([FromRoute] int id)
         {
             var findRole = await databaseContext.Roles.FirstOrDefaultAsync(r => r.Id == id);
-            if (findRole == null) { return NotFound(); }
+            if (findRole == null) return NotFound("Role not found");
+
             databaseContext.Remove(findRole);
             await databaseContext.SaveChangesAsync();
 
