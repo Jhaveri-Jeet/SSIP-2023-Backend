@@ -40,7 +40,7 @@ namespace CriminalDatabaseBackend.Features.Acts
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var act = await databaseContext.Acts.FirstOrDefaultAsync(x => x.Id == id);
-            if (act == null) { return NotFound(); }
+            if (act == null) return NotFound("Act not found");
 
             return Ok(act);
         }
@@ -49,7 +49,7 @@ namespace CriminalDatabaseBackend.Features.Acts
         public async Task<IActionResult> UpdateAct([FromBody] Acts act, [FromRoute] int id)
         {
             var oldAct = await databaseContext.Acts.FirstOrDefaultAsync(x => x.Id == id);
-            if (oldAct == null) { return NotFound(); };
+            if (oldAct == null) return NotFound("Act not found");
 
             oldAct.Name = act.Name;
             oldAct.Description = act.Description;
@@ -62,11 +62,10 @@ namespace CriminalDatabaseBackend.Features.Acts
         public async Task<IActionResult> DeleteAct([FromRoute] int id)
         {
             var act = await databaseContext.Acts.FirstOrDefaultAsync(x => x.Id == id);
-            if (act == null) { return NotFound(); }
+            if (act == null) return NotFound("Act not found"); 
 
             databaseContext.Remove(act);
             await databaseContext.SaveChangesAsync();
-
             return Ok("Act Deleted !");
         }
 
