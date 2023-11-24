@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "25nqmDArPqbCpVL8akfsJeYIF1UcuArk5HwWnZxQI84=",
+  "Hash": "u3kzb6bjEDVDZtn11q09lyEd3qJspP3eusLAfTcBRUA=",
   "Source": "CriminalDatabaseBackend",
   "BasePath": "_content/CriminalDatabaseBackend",
   "Mode": "Default",
@@ -15,5 +15,25 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\black white nature logo.png",
+      "SourceId": "CriminalDatabaseBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\",
+      "BasePath": "_content/CriminalDatabaseBackend",
+      "RelativePath": "EvidenceImages/black white nature logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\EvidenceImages\\black white nature logo.png"
+    }
+  ]
 }

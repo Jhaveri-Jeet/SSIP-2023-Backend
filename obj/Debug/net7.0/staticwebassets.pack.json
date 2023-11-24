@@ -1,48 +1,8 @@
 {
   "Files": [
     {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\Acts.jsx",
-      "PackagePath": "staticwebassets\\EvidenceImages\\Acts.jsx"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\CaseType.jsx",
-      "PackagePath": "staticwebassets\\EvidenceImages\\CaseType.jsx"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg",
-      "PackagePath": "staticwebassets\\EvidenceImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\aluminium_1inch_mirror_cap_cleanup.jpg",
-      "PackagePath": "staticwebassets\\EvidenceImages\\aluminium_1inch_mirror_cap_cleanup.jpg"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\tabs-content-inner-img.jpg",
-      "PackagePath": "staticwebassets\\EvidenceImages\\tabs-content-inner-img.jpg"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\victory_logo.jpg",
-      "PackagePath": "staticwebassets\\EvidenceImages\\victory_logo.jpg"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\904i7mtw.png",
-      "PackagePath": "staticwebassets\\WitnessImages\\904i7mtw.png"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg",
-      "PackagePath": "staticwebassets\\WitnessImages\\WhatsApp Image 2023-11-07 at 22.22.02_52c67a22.jpg"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\download.jpg",
-      "PackagePath": "staticwebassets\\WitnessImages\\download.jpg"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\logo.png",
-      "PackagePath": "staticwebassets\\WitnessImages\\logo.png"
-    },
-    {
-      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\victory_logo.jpg",
-      "PackagePath": "staticwebassets\\WitnessImages\\victory_logo.jpg"
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\black white nature logo.png",
+      "PackagePath": "staticwebassets\\EvidenceImages\\black white nature logo.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.CriminalDatabaseBackend.Microsoft.AspNetCore.StaticWebAssets.props",

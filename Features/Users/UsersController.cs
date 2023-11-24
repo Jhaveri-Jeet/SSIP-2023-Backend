@@ -138,13 +138,13 @@ namespace CriminalDatabaseBackend.Features.Users
             return Ok(user);
         }
 
-        [HttpGet("/CheckUser/{userId}/{passwordHash}")]
-        public async Task<IActionResult> CheckUser([FromRoute] int userId, [FromRoute] string passwordHash)
+        [HttpPost("/CheckUser")]
+        public async Task<IActionResult> CheckUser([FromBody] Users user)
         {
-            var user = await databaseContext.Users.FirstOrDefaultAsync(u => u.Id == userId && u.PasswordHash == passwordHash);
-            if (user == null) return NotFound("User not found");
+            var loggedUser = await databaseContext.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.PasswordHash == user.PasswordHash);
+            if (loggedUser == null) return NotFound("User not found");
 
-            string token = await GenerateJwtAsync(user);
+            string token = await GenerateJwtAsync(loggedUser);
 
             return Ok(new { Token = token });
         }

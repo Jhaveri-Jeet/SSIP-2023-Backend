@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CriminalDatabaseBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd6a4d3c90a965458a033c2c8cb72bd5d627567c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26b8a3b7223b07b572fa9070279322eae1d1f3fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("CriminalDatabaseBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CriminalDatabaseBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
