@@ -124,7 +124,7 @@ namespace CriminalDatabaseBackend.Features.Cases
         [HttpGet("/FetchCasesIncludingTransfered/{RoleId}")]
         public async Task<IActionResult> FetchCasesIncludingTransfered([FromRoute] int roleId)
         {
-            var FetchCasesIncludingTransfered = await databaseContext.Cases.Where(f => f.TransferToId == roleId || f.TransferFromId == roleId || f.RoleId == roleId).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.TransferTo).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.CaseType).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Advocate).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Attorney).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Court).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Act).ToListAsync();
+            var FetchCasesIncludingTransfered = await databaseContext.Cases.Where(f => f.RoleId == roleId).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.TransferTo).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.CaseType).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Advocate).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Attorney).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Court).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Act).ToListAsync();
             if (FetchCasesIncludingTransfered == null) return NotFound("Case not found");
 
             return Ok(FetchCasesIncludingTransfered);
