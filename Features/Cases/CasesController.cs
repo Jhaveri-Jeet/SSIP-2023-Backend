@@ -136,21 +136,19 @@ namespace CriminalDatabaseBackend.Features.Cases
             var oldCase = await databaseContext.Cases.FirstOrDefaultAsync(c => c.Id == id);
             if (oldCase == null) return NotFound("Case not found");
 
-            oldCase.DateFiled = cases.DateFiled;
-            oldCase.CnrNumber = cases.CnrNumber;
-            oldCase.Petitioner = cases.Petitioner;
-            oldCase.Defendant = cases.Defendant;
-            oldCase.JudgeName = cases.JudgeName;
-            oldCase.Description = cases.Description;
-            oldCase.CaseStatus = cases.CaseStatus;
-            oldCase.Judgment = cases.Judgment;
-            oldCase.Comments = cases.Comments;
             oldCase.ActId = cases.ActId;
-            oldCase.CourtId = cases.CourtId;
-            oldCase.CaseTypeId = cases.CaseTypeId;
             oldCase.AdvocateId = cases.AdvocateId;
             oldCase.AttorneyId = cases.AttorneyId;
-            oldCase.RoleId = cases.RoleId;
+            oldCase.CaseStatus = cases.CaseStatus;
+            oldCase.CaseTypeId = cases.CaseTypeId;
+            oldCase.CnrNumber = cases.CnrNumber;
+            oldCase.Comments = cases.Comments;
+            oldCase.DateFiled = cases.DateFiled;
+            oldCase.Defendant = cases.Defendant;
+            oldCase.Description = cases.Description;
+            oldCase.JudgeName = cases.JudgeName;
+            oldCase.Judgment = cases.Judgment;
+            oldCase.Petitioner = cases.Petitioner;
             oldCase.TransferFromId = cases.TransferFromId;
             oldCase.TransferToId = cases.TransferToId;
 
