@@ -1,8 +1,92 @@
 {
   "Files": [
     {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\Indian.jpg",
+      "PackagePath": "staticwebassets\\EvidenceImages\\Indian.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\Land Deed D S 1049-01.jpg",
+      "PackagePath": "staticwebassets\\EvidenceImages\\Land Deed D S 1049-01.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\MRP.jpg",
+      "PackagePath": "staticwebassets\\EvidenceImages\\MRP.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\Untitled.jpeg",
+      "PackagePath": "staticwebassets\\EvidenceImages\\Untitled.jpeg"
+    },
+    {
       "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\black white nature logo.png",
       "PackagePath": "staticwebassets\\EvidenceImages\\black white nature logo.png"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\diamond-ring-designer-light-weight-gold.jpg",
+      "PackagePath": "staticwebassets\\EvidenceImages\\diamond-ring-designer-light-weight-gold.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\favicon.ico",
+      "PackagePath": "staticwebassets\\EvidenceImages\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\forensic-biology-dna-report-tarrant-county.jpg",
+      "PackagePath": "staticwebassets\\EvidenceImages\\forensic-biology-dna-report-tarrant-county.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\images.png",
+      "PackagePath": "staticwebassets\\EvidenceImages\\images.png"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\logo.png",
+      "PackagePath": "staticwebassets\\EvidenceImages\\logo.png"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\EvidenceImages\\logo512.png",
+      "PackagePath": "staticwebassets\\EvidenceImages\\logo512.png"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\6b7ed698713c09ad9e6afc7dcb996a09.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\6b7ed698713c09ad9e6afc7dcb996a09.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\Untitled.jpeg",
+      "PackagePath": "staticwebassets\\WitnessImages\\Untitled.jpeg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\b7ed698713c09ad9e6afc7dcb996a09.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\b7ed698713c09ad9e6afc7dcb996a09.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\diamond-ring-designer-light-weight-gold.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\diamond-ring-designer-light-weight-gold.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\download.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\download.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\ed698713c09ad9e6afc7dcb996a09.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\ed698713c09ad9e6afc7dcb996a09.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\favicon.ico",
+      "PackagePath": "staticwebassets\\WitnessImages\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\images.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\images.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\images1.jpg",
+      "PackagePath": "staticwebassets\\WitnessImages\\images1.jpg"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\logo192.png",
+      "PackagePath": "staticwebassets\\WitnessImages\\logo192.png"
+    },
+    {
+      "Id": "D:\\Jeet Jhaveri\\Projects\\.Net\\CriminalDatabaseBackend\\wwwroot\\WitnessImages\\logo512.png",
+      "PackagePath": "staticwebassets\\WitnessImages\\logo512.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.CriminalDatabaseBackend.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\NewFolder\**" />
+    <Content Remove="Features\NewFolder\**" />
+    <EmbeddedResource Remove="Features\NewFolder\**" />
+    <None Remove="Features\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />

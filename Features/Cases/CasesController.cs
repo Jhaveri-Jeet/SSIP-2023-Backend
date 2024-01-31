@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Composition;
+using System.Data;
 
 namespace CriminalDatabaseBackend.Features.Cases
 {
@@ -40,6 +41,8 @@ namespace CriminalDatabaseBackend.Features.Cases
             var role = await databaseContext.Roles.FirstOrDefaultAsync(role => role.Id == cases.RoleId);
             if (attorney == null) return NotFound("Role not found");
 
+            DateTime todaysDate = new DateTime();
+            cases.DateFiled = todaysDate.ToString("d");
             cases.CaseStatus = "Pending";
             cases.TransferFromId = cases.CourtId;
             cases.TransferToId = cases.CourtId;
@@ -62,7 +65,7 @@ namespace CriminalDatabaseBackend.Features.Cases
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var cases = await databaseContext.Cases.Include(cases => cases.CaseType).Include(cases => cases.Court).Include(cases => cases.Act).Include(cases => cases.Advocate).Include(cases => cases.Attorney).Include(cases => cases.Role).FirstOrDefaultAsync(c => c.Id == id);
+            var cases = await databaseContext.Cases.Include(cases => cases.CaseType).Include(cases => cases.Court).Include(cases => cases.Act).Include(cases => cases.Advocate).Include(cases => cases.Attorney).Include(cases => cases.Role).Include(cases => cases.TransferFrom).Include(cases => cases.TransferTo).FirstOrDefaultAsync(c => c.Id == id);
             if (cases == null) return NotFound("Case not found");
 
             return Ok(cases);
@@ -121,13 +124,35 @@ namespace CriminalDatabaseBackend.Features.Cases
             return Ok(totalRunningCases);
         }
 
-        [HttpGet("/FetchCasesIncludingTransfered/{RoleId}")]
+        [HttpGet("/FetchCasesIncludingTransferedAccRole/{RoleId}")]
         public async Task<IActionResult> FetchCasesIncludingTransfered([FromRoute] int roleId)
         {
             var FetchCasesIncludingTransfered = await databaseContext.Cases.Where(f => f.RoleId == roleId).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.TransferTo).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.CaseType).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Advocate).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Attorney).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Court).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Act).ToListAsync();
             if (FetchCasesIncludingTransfered == null) return NotFound("Case not found");
 
             return Ok(FetchCasesIncludingTransfered);
+        }
+        
+        [HttpGet("/FetchCasesIncludingTransferedAccCourt/{CourtId}")]
+        public async Task<IActionResult> FetchCasesIncludingTransferedAccCourt([FromRoute] int courtId)
+        {
+            var FetchCasesIncludingTransfered = await databaseContext.Cases.Where(f => f.CourtId == courtId).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.TransferTo).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.CaseType).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Advocate).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Attorney).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Court).Include(FetchCasesIncludingTransfered => FetchCasesIncludingTransfered.Act).ToListAsync();
+            if (FetchCasesIncludingTransfered == null) return NotFound("Case not found");
+
+            return Ok(FetchCasesIncludingTransfered);
+        }
+
+        [HttpGet("/FetchCaesAccDate")]
+        public async Task<IActionResult> FetchCaesAccDate()
+        {
+            DateTime today = DateTime.Now;
+            string dateOnly = today.ToString("yyyy-MM-dd");
+
+            var hearing = await databaseContext.Hearing.Where(hearing => hearing.HearingDate == dateOnly).ToListAsync();
+            if (hearing == null) return NotFound("Hearing Not Found");
+
+            // Case nu karvanu baki che 
+            return Ok(hearing);
         }
 
         [HttpPut("{id}")]

@@ -13,5 +13,9 @@ namespace CriminalDatabaseBackend.Features.Evidences
         [ForeignKey(nameof(CaseId))]
         public int CaseId { get; set; }
         public virtual Cases.Cases? Case { get; set; }
+
+        [ForeignKey(nameof(RoleId))]
+        public int RoleId { get; set; }
+        public virtual Roles.Roles? Role { get; set; }
     }
 }

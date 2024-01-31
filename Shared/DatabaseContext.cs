@@ -12,6 +12,7 @@ using CriminalDatabaseBackend.Features.Users;
 using CriminalDatabaseBackend.Features.Witness;
 using CriminalDatabaseBackend.Features.Evidences;
 using Microsoft.EntityFrameworkCore;
+using CriminalDatabaseBackend.Features.AccessRequest;
 
 namespace CriminalDatabaseBackend.Shared
 {
@@ -38,6 +39,7 @@ namespace CriminalDatabaseBackend.Shared
         public virtual DbSet<Hearing> Hearing { get; set; }
         public virtual DbSet<Witness> Witness { get; set; }
         public virtual DbSet<Evidences> Evidences { get; set; }
+        public virtual DbSet<AccessRequest> AccessRequest { get; set; }
 
     }
 }

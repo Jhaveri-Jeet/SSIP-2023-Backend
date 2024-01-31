@@ -9,5 +9,9 @@ namespace CriminalDatabaseBackend.Features.Advocates
         public string? Name { get; set; }
 
         public string? EnrollmentNumber { get; set; }
+
+        public string? Email { get; set; }
+
+        public string? Number { get; set; }
     }
 }

@@ -16,6 +16,10 @@ namespace CriminalDatabaseBackend.Features.Cases
         public string? CaseStatus { get; set; }
         public string? Judgment { get; set; }
         public string? Comments { get; set; }
+        public string? PetitionerEmail { get; set; }
+        public string? PetitionerNumber { get; set; }
+        public string? DefendantEmail { get; set; }
+        public string? DefendantNumber { get; set; }
 
         [ForeignKey(nameof(CaseTypeId))]
         public int CaseTypeId { get; set; }
